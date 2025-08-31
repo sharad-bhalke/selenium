@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-08-31T21:36:05 IST" name="Surefire suite" finished-at="2025-08-31T21:36:32 IST" duration-ms="26921">
+    <groups>
+    </groups>
+    <test started-at="2025-08-31T21:36:05 IST" name="Surefire test" finished-at="2025-08-31T21:36:32 IST" duration-ms="26921">
+      <class name="tests.LoginTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:tests.LoginTest@ef9296d]" started-at="2025-08-31T21:36:05 IST" name="setUp" finished-at="2025-08-31T21:36:09 IST" duration-ms="4035" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testValidLogin()[pri:0, instance:tests.LoginTest@ef9296d]" started-at="2025-08-31T21:36:09 IST" name="testValidLogin" finished-at="2025-08-31T21:36:28 IST" duration-ms="18494" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testValidLogin -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:tests.LoginTest@ef9296d]" started-at="2025-08-31T21:36:28 IST" name="closeBrowser" finished-at="2025-08-31T21:36:32 IST" duration-ms="4344" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- tests.LoginTest -->
+    </test> <!-- Surefire test -->
+  </suite> <!-- Surefire suite -->
+</testng-results>
