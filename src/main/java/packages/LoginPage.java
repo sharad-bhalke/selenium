@@ -3,6 +3,8 @@ package packages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import utils.Log;
+
 public class LoginPage {
 	
 	private WebDriver driver;
@@ -29,6 +31,7 @@ public class LoginPage {
 	}
 	public void clickOnLoginButton() 
 	{
+		Log.info("Clicking on login button");
 		driver.findElement(LoginButton).click();
 	}
 
