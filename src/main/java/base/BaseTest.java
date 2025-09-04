@@ -2,36 +2,59 @@ package base;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
+
+import utils.ExtentReportsManager;
 import utils.Log;
 
 public class BaseTest {
-	
-	protected WebDriver driver;
-	 @BeforeTest 
-	public void setUp() {
-		Log.info("Starting the exiscution WebDriver");
-		driver=new ChromeDriver();
-		
-		driver.manage().window().maximize();
-		
-		Log.info("navigation to the browser and the browser is open");
-		
-		driver.get("https://admin-demo.nopcommerce.com/login?ReturnUrl=%2Fadmin%2F");
-		
-	}
-	 @AfterTest
-	 public void closeBrowser() throws InterruptedException {
-		 Thread.sleep(4000);
-		 
-		 Log.info("closing the browser the execution is completed");
-		 driver.quit();
-		 
-		 
-		 
-	 }
-	
 
+    protected static ExtentReports extent;
+    protected static ExtentTest test;
+    protected WebDriver driver;
+
+    @BeforeSuite
+    public void setupReport() {
+        extent = ExtentReportsManager.getReportInstance();
+    }
+
+    @AfterSuite
+    public void teardownReport() {
+        extent.flush();
+    }
+
+    @BeforeMethod
+    public void setUp() {
+        Log.info("Starting WebDriver execution");
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        Log.info("Navigating to nopCommerce admin login page");
+        driver.get("https://admin-demo.nopcommerce.com/login?ReturnUrl=%2Fadmin%2F");
+    }
+
+    @AfterMethod
+    public void tearDown(ITestResult result) {
+        if (result.getStatus() == ITestResult.FAILURE) {
+            try {
+                String screenshotPath = ExtentReportsManager.captureScreenshot(driver, result.getName());
+                test.fail("Test failed ... check screenshot",
+                        MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (driver != null) {
+            Log.info("Closing the browser - execution completed");
+            driver.quit();
+        }
+    }
 }
