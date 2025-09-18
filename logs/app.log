@@ -1,10 +1,1 @@
-[2025-09-04 22:30:27] [INFO ] [main] Log - Starting WebDriver execution
-[2025-09-04 22:30:28] [INFO ] [main] Log - Navigating to nopCommerce admin login page
-[2025-09-04 22:30:28] [INFO ] [main] Log - This is a login test
-[2025-09-04 22:30:29] [INFO ] [main] Log - Clicking on login button
-[2025-09-04 22:30:29] [INFO ] [main] Log - Starting WebDriver execution
-[2025-09-04 22:30:31] [INFO ] [main] Log - Navigating to nopCommerce admin login page
-[2025-09-04 22:30:31] [INFO ] [main] Log - Closing the browser - execution completed
-[2025-09-04 22:30:31] [INFO ] [main] Log - This is a login test
-[2025-09-04 22:30:32] [INFO ] [main] Log - Clicking on login button
-[2025-09-04 22:30:34] [INFO ] [main] Log - Closing the browser - execution completed
+[2025-09-18 21:36:11] [WARN ] [main] ZipPackage - Error in zip file Sheet1 - falling back to stream processing (i.e. ignoring zip central directory)
