@@ -1,5 +1,6 @@
 package mail;
 
+import java.io.File;
 import java.util.Properties;
 import jakarta.mail.Authenticator;
 import jakarta.mail.Message;
@@ -9,6 +10,7 @@ import jakarta.mail.Transport;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeBodyPart;
 import jakarta.mail.internet.MimeMessage;
+import jakarta.mail.internet.MimeMultipart;
 
 public class sendEmail {
 
@@ -52,13 +54,29 @@ public class sendEmail {
             MimeBodyPart textpart=new MimeBodyPart();
             textpart.setText("Hello,\n\nThis is a test email from Java.\n\nRegards,\nQA Team");
             
-            //attachment part
-            MimeBodyPart AttachementPart = new MimeBodyPart();
+         // Attachment part
+            MimeBodyPart attachmentPart = new MimeBodyPart();
+
+            // Correct property for project directory
+            String filePath = System.getProperty("user.dir") + "/reports/ExtentReport.html";
+            System.out.println("Attached file path: " + filePath);
+
+            // Attach file
+            attachmentPart.attachFile(new File(filePath));
+            
+            //combine email and body part and attachement
+            
+            MimeMultipart multipart=new MimeMultipart();
+            multipart.addBodyPart(textpart);
+            multipart.addBodyPart(attachmentPart);
+            message.setContent(multipart);
+
+            
            // AttachementPart.
 
             // Send email
-          //  Transport.send(message);
-            //System.out.println(" Mail sent successfully!");
+           Transport.send(message);
+           System.out.println(" Mail sent successfully!");
 
         } catch (Exception e) {
             e.printStackTrace();

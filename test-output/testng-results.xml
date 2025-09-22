@@ -2,22 +2,22 @@
 <testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-09-18T21:36:11 IST" name="Default suite" finished-at="2025-09-18T21:36:11 IST" duration-ms="509">
+  <suite started-at="2025-09-22T22:15:34 IST" name="Default suite" finished-at="2025-09-22T22:15:34 IST" duration-ms="35">
     <groups>
     </groups>
-    <test started-at="2025-09-18T21:36:11 IST" name="Default test" finished-at="2025-09-18T21:36:11 IST" duration-ms="509">
+    <test started-at="2025-09-22T22:15:34 IST" name="Default test" finished-at="2025-09-22T22:15:34 IST" duration-ms="35">
       <class name="tests.LoginTest">
-        <test-method is-config="true" signature="setupReport()[pri:0, instance:tests.LoginTest@4b2bac3f]" started-at="2025-09-18T21:36:10 IST" name="setupReport" finished-at="2025-09-18T21:36:11 IST" duration-ms="200" status="PASS">
+        <test-method is-config="true" signature="setupReport()[pri:0, instance:tests.LoginTest@302552ec]" started-at="2025-09-22T22:15:34 IST" name="setupReport" finished-at="2025-09-22T22:15:34 IST" duration-ms="198" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupReport -->
-        <test-method signature="testValidLogin(java.lang.String,java.lang.String)[pri:0, instance:tests.LoginTest@4b2bac3f]" started-at="2025-09-18T21:36:11 IST" name="testValidLogin" data-provider="LoginTest" finished-at="2025-09-18T21:36:11 IST" duration-ms="0" status="FAIL">
+        <test-method signature="testValidLogin(java.lang.String,java.lang.String)[pri:0, instance:tests.LoginTest@302552ec]" started-at="2025-09-22T22:15:34 IST" name="testValidLogin" data-provider="LoginTest" finished-at="2025-09-22T22:15:34 IST" duration-ms="0" status="FAIL">
           <exception class="java.lang.RuntimeException">
             <message>
-              <![CDATA[org.apache.poi.openxml4j.exceptions.InvalidOperationException: Can't open the specified file input stream from file: 'Sheet1']]>
+              <![CDATA[java.lang.NullPointerException]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.RuntimeException: org.apache.poi.openxml4j.exceptions.InvalidOperationException: Can't open the specified file input stream from file: 'Sheet1'
+              <![CDATA[java.lang.RuntimeException: java.lang.NullPointerException
 at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodNoCheckedException(MethodInvocationHelper.java:58)
 at org.testng.internal.invokers.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:159)
 at org.testng.internal.Parameters.handleParameters(Parameters.java:809)
@@ -44,40 +44,24 @@ at org.testng.TestNG.run(TestNG.java:1079)
 at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-Caused by: org.apache.poi.openxml4j.exceptions.InvalidOperationException: Can't open the specified file input stream from file: 'Sheet1'
-at org.apache.poi.openxml4j.opc.ZipPackage.openZipEntrySourceStream(ZipPackage.java:212)
-at org.apache.poi.openxml4j.opc.ZipPackage.<init>(ZipPackage.java:199)
-at org.apache.poi.openxml4j.opc.ZipPackage.<init>(ZipPackage.java:171)
-at org.apache.poi.openxml4j.opc.OPCPackage.open(OPCPackage.java:247)
-at org.apache.poi.openxml4j.opc.OPCPackage.open(OPCPackage.java:179)
-at org.apache.poi.ooxml.POIXMLDocument.openPackage(POIXMLDocument.java:88)
-at org.apache.poi.xssf.usermodel.XSSFWorkbook.<init>(XSSFWorkbook.java:358)
-at utils.ExcelUtils.loadExcel(ExcelUtils.java:20)
-at tests.LoginTest.getLoginData(LoginTest.java:22)
+Caused by: java.lang.NullPointerException
+at java.base/java.io.FileInputStream.<init>(FileInputStream.java:144)
+at java.base/java.io.FileInputStream.<init>(FileInputStream.java:106)
+at utils.ExcelUtils.loadExcel(ExcelUtils.java:19)
+at tests.LoginTest.getLoginData(LoginTest.java:23)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
 at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
 at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodNoCheckedException(MethodInvocationHelper.java:54)
 ... 25 more
-Caused by: java.nio.file.NoSuchFileException: Sheet1
-at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
-at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
-at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
-at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
-at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
-at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
-at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
-at java.base/java.nio.file.Files.newInputStream(Files.java:159)
-at org.apache.poi.openxml4j.opc.ZipPackage.openZipEntrySourceStream(ZipPackage.java:209)
-... 38 more
 ]]>
             </full-stacktrace>
           </exception> <!-- java.lang.RuntimeException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testValidLogin -->
-        <test-method is-config="true" signature="teardownReport()[pri:0, instance:tests.LoginTest@4b2bac3f]" started-at="2025-09-18T21:36:11 IST" name="teardownReport" finished-at="2025-09-18T21:36:11 IST" duration-ms="297" status="PASS">
+        <test-method is-config="true" signature="teardownReport()[pri:0, instance:tests.LoginTest@302552ec]" started-at="2025-09-22T22:15:34 IST" name="teardownReport" finished-at="2025-09-22T22:15:34 IST" duration-ms="211" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardownReport -->

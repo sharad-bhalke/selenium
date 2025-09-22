@@ -8,17 +8,18 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
+import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.MediaEntityBuilder;
 
+import utils.EmailUtils;
 import utils.ExtentReportsManager;
 import utils.Log;
 
 public class BaseTest {
 
     protected static ExtentReports extent;
-    protected static ExtentTest test;
+    protected ExtentTest test;
     protected WebDriver driver;
 
     @BeforeSuite
@@ -29,6 +30,10 @@ public class BaseTest {
     @AfterSuite
     public void teardownReport() {
         extent.flush();
+
+        // Send report via email
+        String reportPath = ExtentReportsManager.reportPath;
+       // EmailUtils.sendTestReport(reportPath);
     }
 
     @BeforeMethod
@@ -36,6 +41,7 @@ public class BaseTest {
         Log.info("Starting WebDriver execution");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+
         Log.info("Navigating to nopCommerce admin login page");
         driver.get("https://admin-demo.nopcommerce.com/login?ReturnUrl=%2Fadmin%2F");
     }
@@ -45,13 +51,11 @@ public class BaseTest {
         if (result.getStatus() == ITestResult.FAILURE) {
             try {
                 String screenshotPath = ExtentReportsManager.captureScreenshot(driver, result.getName());
-                test.fail("Test failed ... check screenshot",
+                ExtentReportsManager.getTest().fail("Test failed ... check screenshot",
                         MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            extent.flush();
-
         }
 
         if (driver != null) {

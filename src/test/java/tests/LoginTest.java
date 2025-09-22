@@ -15,10 +15,11 @@ import org.testng.Assert;
 
 import utils.Log;
 
+
 public class LoginTest extends BaseTest {
 	@DataProvider(name = "LoginTest")
 	public Object[][] getLoginData() throws IOException {
-		String filePath = System.getProperty("user.dir") + "/testdata/TestData.xlsx";
+		String filePath = System.getProperty(("user.dir") + "/testdata/TestData.xlsx");
 		ExcelUtils.loadExcel(filePath, "Sheet1");
 		int rowCount = ExcelUtils.getRowsCount();
 		Object[][] data = new Object[rowCount - 1][2];

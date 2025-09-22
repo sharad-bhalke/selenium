@@ -19,13 +19,17 @@ public class ExtentReportsManager {
 	
 	private static ExtentTest test;
 	
+	public static String reportPath;
+	
 	
 	public static ExtentReports getReportInstance() {
 		
 		if(extent==null) {
-			String timestamp=new SimpleDateFormat("yyyy-mm-dd_hh-mm-ss").format(new Date());
-			String reoprtPath ="reports/ExtentReport_"+timestamp+".html";
-			ExtentSparkReporter reporter=new ExtentSparkReporter(reoprtPath);
+			String timestamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date());
+			reportPath = "reports/ExtentReport_" + timestamp + ".html";
+			ExtentSparkReporter reporter = new ExtentSparkReporter(reportPath);
+
+			
 			
 			reporter.config().setDocumentTitle("Automation Test Report");
 			reporter.config().setReportName("Test Execution Report");
