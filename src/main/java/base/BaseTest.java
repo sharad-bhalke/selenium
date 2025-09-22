@@ -50,6 +50,8 @@ public class BaseTest {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            extent.flush();
+
         }
 
         if (driver != null) {

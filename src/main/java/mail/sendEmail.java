@@ -7,10 +7,12 @@ import jakarta.mail.PasswordAuthentication;
 import jakarta.mail.Session;
 import jakarta.mail.Transport;
 import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeBodyPart;
 import jakarta.mail.internet.MimeMessage;
 
 public class sendEmail {
 
+	
     public static void main(String[] args) {
 
         final String senderEmail = "sharad.bhalke7@gmail.com";
@@ -45,10 +47,18 @@ public class sendEmail {
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientEmail));
             message.setSubject("Test email from QA team");
             message.setText("Hello,\n\nThis is a test email from Java.\n\nRegards,\nQA Team");
+            
+            //email body part
+            MimeBodyPart textpart=new MimeBodyPart();
+            textpart.setText("Hello,\n\nThis is a test email from Java.\n\nRegards,\nQA Team");
+            
+            //attachment part
+            MimeBodyPart AttachementPart = new MimeBodyPart();
+           // AttachementPart.
 
             // Send email
-            Transport.send(message);
-            System.out.println("✅ Mail sent successfully!");
+          //  Transport.send(message);
+            //System.out.println(" Mail sent successfully!");
 
         } catch (Exception e) {
             e.printStackTrace();
