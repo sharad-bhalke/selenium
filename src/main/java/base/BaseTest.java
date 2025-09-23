@@ -52,11 +52,11 @@ public class BaseTest {
         try {
             if (result.getStatus() == ITestResult.FAILURE) {
                 String screenshotPath = ExtentReportsManager.captureScreenshot(driver, result.getName());
-                ExtentReportsManager.getTest().fail("❌ Test failed, check screenshot",
+                ExtentReportsManager.getTest().fail(" Test failed, check screenshot",
                         MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
 
             } else if (result.getStatus() == ITestResult.SUCCESS) {
-                ExtentReportsManager.getTest().pass("✅ Test passed successfully");
+                ExtentReportsManager.getTest().pass(" Test passed successfully");
             } else if (result.getStatus() == ITestResult.SKIP) {
                 ExtentReportsManager.getTest().skip("⚠ Test skipped");
             }
