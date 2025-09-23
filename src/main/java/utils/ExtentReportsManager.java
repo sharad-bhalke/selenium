@@ -44,7 +44,7 @@ public class ExtentReportsManager  extends BaseTest{
         return test;
     }
 
-    // ✅ Getter for current ExtentTest
+    //  Getter for current ExtentTest
     public static ExtentTest getTest() {
         return test;
     }
