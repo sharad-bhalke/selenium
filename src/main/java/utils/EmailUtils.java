@@ -3,6 +3,7 @@ package utils;
 import java.io.File;
 import java.util.Properties;
 
+import base.BaseTest;
 import jakarta.mail.Authenticator;
 import jakarta.mail.Message;
 import jakarta.mail.PasswordAuthentication;
@@ -13,7 +14,7 @@ import jakarta.mail.internet.MimeBodyPart;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.mail.internet.MimeMultipart;
 
-public class EmailUtils {
+public class EmailUtils extends BaseTest{
 	
 
 	 public static void main(String[] args) {
@@ -72,6 +73,7 @@ public class EmailUtils {
 	            multipart.addBodyPart(attachmentPart);
 	            message.setContent(multipart);
 
+	            
 	            
 	           // AttachementPart.
 

@@ -38,7 +38,7 @@ public class LoginTest extends BaseTest {
 
 		Log.info("This is a login test");
 
-		test = ExtentReportsManager.createTest("LOGIN TEST");
+		test = ExtentReportsManager.createTest("LOGIN TEST - " + username);
 
 		test.info("nagatt...");
 

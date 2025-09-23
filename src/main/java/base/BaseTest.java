@@ -1,5 +1,6 @@
 package base;
 
+import java.lang.reflect.Method;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestResult;
@@ -12,15 +13,14 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 
-import utils.EmailUtils;
 import utils.ExtentReportsManager;
 import utils.Log;
 
 public class BaseTest {
 
+    protected WebDriver driver;          // driver accessible in child class
+    protected ExtentTest test;           // local test for child class
     protected static ExtentReports extent;
-    protected ExtentTest test;
-    protected WebDriver driver;
 
     @BeforeSuite
     public void setupReport() {
@@ -30,17 +30,18 @@ public class BaseTest {
     @AfterSuite
     public void teardownReport() {
         extent.flush();
-
-        // Send report via email
         String reportPath = ExtentReportsManager.reportPath;
-       // EmailUtils.sendTestReport(reportPath);
+        // EmailUtils.sendTestReport(reportPath);
     }
 
     @BeforeMethod
-    public void setUp() {
+    public void setUp(Method method) {
         Log.info("Starting WebDriver execution");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+
+        // Create ExtentTest for current method and assign locally
+        test = ExtentReportsManager.createTest(method.getName());
 
         Log.info("Navigating to nopCommerce admin login page");
         driver.get("https://admin-demo.nopcommerce.com/login?ReturnUrl=%2Fadmin%2F");
@@ -48,19 +49,24 @@ public class BaseTest {
 
     @AfterMethod
     public void tearDown(ITestResult result) {
-        if (result.getStatus() == ITestResult.FAILURE) {
-            try {
+        try {
+            if (result.getStatus() == ITestResult.FAILURE) {
                 String screenshotPath = ExtentReportsManager.captureScreenshot(driver, result.getName());
-                ExtentReportsManager.getTest().fail("Test failed ... check screenshot",
+                ExtentReportsManager.getTest().fail("❌ Test failed, check screenshot",
                         MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
 
-        if (driver != null) {
-            Log.info("Closing the browser - execution completed");
-            driver.quit();
+            } else if (result.getStatus() == ITestResult.SUCCESS) {
+                ExtentReportsManager.getTest().pass("✅ Test passed successfully");
+            } else if (result.getStatus() == ITestResult.SKIP) {
+                ExtentReportsManager.getTest().skip("⚠ Test skipped");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (driver != null) {
+                Log.info("Closing the browser - execution completed");
+                driver.quit();
+            }
         }
     }
 }

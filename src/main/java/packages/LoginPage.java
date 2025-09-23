@@ -3,9 +3,10 @@ package packages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import base.BaseTest;
 import utils.Log;
 
-public class LoginPage {
+public class LoginPage  extends BaseTest{
 	
 	private WebDriver driver;
 	private By EmailTextBox= By.id("Email");
