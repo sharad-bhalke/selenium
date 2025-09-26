@@ -22,6 +22,7 @@ public class ExtentReportsManager  extends BaseTest{
 
     public static String reportPath;
 
+    
     // Get or create ExtentReports
     public static ExtentReports getReportInstance() {
         if (extent == null) {
