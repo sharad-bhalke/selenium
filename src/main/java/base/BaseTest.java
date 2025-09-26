@@ -36,8 +36,9 @@ public class BaseTest {
 
     @BeforeMethod
     public void setUp(Method method) {
+    	driver = new ChromeDriver();
         Log.info("Starting WebDriver execution");
-        driver = new ChromeDriver();
+      //  driver = new ChromeDriver();
         driver.manage().window().maximize();
 
         // Create ExtentTest for current method and assign locally

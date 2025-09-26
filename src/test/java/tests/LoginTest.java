@@ -7,6 +7,8 @@ import java.io.IOException;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.ExtentTest;
+
 import base.BaseTest;
 import packages.LoginPage;
 import utils.ExcelUtils;
@@ -35,35 +37,21 @@ public class LoginTest extends BaseTest {
 
 	@Test(dataProvider = "LoginTest")
 	public void testValidLogin(String username, String password) {
+	    Log.info("This is a login test");
 
-		Log.info("This is a login test");
+	    // Create ExtentTest dynamically per username
+	    ExtentTest test = ExtentReportsManager.createTest("LOGIN TEST - " + username);
 
-		test = ExtentReportsManager.createTest("LOGIN TEST - " + username);
+	    LoginPage loginPage = new LoginPage(driver);
+	    loginPage.enterUserName(username);
+	    loginPage.enterPassWord(password);
+	    loginPage.clickOnLoginButton();
 
-		test.info("nagatt...");
+	    Assert.assertEquals(driver.getTitle(), "Dashboard / nopCommerce administration", "Title did not match!");
+	    test.pass("Login successful for user: " + username);
+	}
 
-		LoginPage LoginPage = new LoginPage(driver);
-		test.info("entering mail");
-
-		/*
-		 * LoginPage.enterUserName("admin@yourstore.com");
-		 * LoginPage.enterPassWord("admin");
-		 */
-
-		
-		LoginPage.enterUserName(username);
-		LoginPage.enterPassWord(password);
-
-		LoginPage.clickOnLoginButton();
-
-		test.info("Test is pass");
-
-		System.out.println("this is the title: " + driver.getTitle());
-
-		//Assert.assertEquals(driver.getTitle(), "Dashboard / nopCommerce administration", "Title did not match!");
-
-		test.pass("login succeefuly");
 
 	}
 
-}
+
