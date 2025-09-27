@@ -129,31 +129,11 @@
                   <a name="testValidLogin">
                   </a> <!-- testValidLogin -->
                   <span class="method-name">testValidLogin</span>
-                  <div class="stack-trace">java.lang.RuntimeException: org.apache.poi.openxml4j.exceptions.InvalidOperationException: Can&apos;t open the specified file input stream from file: &apos;Sheet1&apos;
+                  <div class="stack-trace">java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)&quot; because &quot;this.driver&quot; is null
+	at packages.LoginPage.enterUsername(LoginPage.java:23)
+	at tests.LoginTest.testValidLogin(LoginTest.java:12)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-Caused by: org.apache.poi.openxml4j.exceptions.InvalidOperationException: Can&apos;t open the specified file input stream from file: &apos;Sheet1&apos;
-	at org.apache.poi.openxml4j.opc.ZipPackage.openZipEntrySourceStream(ZipPackage.java:212)
-	at org.apache.poi.openxml4j.opc.ZipPackage.&lt;init&gt;(ZipPackage.java:199)
-	at org.apache.poi.openxml4j.opc.ZipPackage.&lt;init&gt;(ZipPackage.java:171)
-	at org.apache.poi.openxml4j.opc.OPCPackage.open(OPCPackage.java:247)
-	at org.apache.poi.openxml4j.opc.OPCPackage.open(OPCPackage.java:179)
-	at org.apache.poi.ooxml.POIXMLDocument.openPackage(POIXMLDocument.java:88)
-	at org.apache.poi.xssf.usermodel.XSSFWorkbook.&lt;init&gt;(XSSFWorkbook.java:358)
-	at utils.ExcelUtils.loadExcel(ExcelUtils.java:20)
-	at tests.LoginTest.getLoginData(LoginTest.java:22)
-	... 30 more
-Caused by: java.nio.file.NoSuchFileException: Sheet1
-	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
-	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
-	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
-	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
-	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
-	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
-	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
-	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
-	at org.apache.poi.openxml4j.opc.ZipPackage.openZipEntrySourceStream(ZipPackage.java:209)
-	... 43 more
-... Removed 35 stack frames
+... Removed 30 stack frames
 </div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
@@ -214,12 +194,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'testValidLogin')
 data.setCell(0, 2, 'tests.LoginTest')
-data.setCell(0, 3, 0);
+data.setCell(0, 3, 4);
 window.suiteTableData['Surefire_suite']= { tableData: data, tableDiv: 'times-div-Surefire_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 0 ms</span>
+              <span class="suite-total-time">Total running time: 4 ms</span>
               <div id="times-div-Surefire_suite">
               </div> <!-- times-div-Surefire_suite -->
             </div> <!-- times-div -->
@@ -247,12 +227,28 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">tests.LoginTest</div> <!-- chronological-class-name -->
               <div class="configuration-suite before">
-                <span class="method-name">setupReport</span>
+                <span class="method-name">setupSuite</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-suite before -->
+              <div class="configuration-method before">
+                <span class="method-name">setup(public void tests.LoginTest.testValidLogin())</span>
+                <span class="method-start">198 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">testValidLogin</span>
+                <span class="method-start">5390 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">tearDown([TestResult name=testValidLogin status=FAILURE method=LoginTest.testValidLogin()[pri:0, instance:tes...)</span>
+                <span class="method-start">5404 ms</span>
+              </div> <!-- configuration-method after -->
               <div class="configuration-suite after">
-                <span class="method-name">teardownReport</span>
-                <span class="method-start">578 ms</span>
+                <span class="method-name">tearDownSuite</span>
+                <span class="method-start">5453 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

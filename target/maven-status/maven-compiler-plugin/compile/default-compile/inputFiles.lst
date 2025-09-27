@@ -1,6 +1,8 @@
 C:\Users\lenovo\eclipse-workspace\selenium-automation\src\main\java\base\BaseTest.java
 C:\Users\lenovo\eclipse-workspace\selenium-automation\src\main\java\mail\sendEmail.java
 C:\Users\lenovo\eclipse-workspace\selenium-automation\src\main\java\packages\LoginPage.java
+C:\Users\lenovo\eclipse-workspace\selenium-automation\src\main\java\utils\EmailUtils.java
 C:\Users\lenovo\eclipse-workspace\selenium-automation\src\main\java\utils\ExcelUtils.java
 C:\Users\lenovo\eclipse-workspace\selenium-automation\src\main\java\utils\ExtentReportsManager.java
 C:\Users\lenovo\eclipse-workspace\selenium-automation\src\main\java\utils\Log.java
+C:\Users\lenovo\eclipse-workspace\selenium-automation\src\main\java\utils\ScreenshotUtils.java
