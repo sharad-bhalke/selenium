@@ -20,25 +20,27 @@ public class BaseTest {
 
     protected WebDriver driver;          // driver accessible in child class
     protected ExtentTest test;           // local test for child class
-    protected static ExtentReports extent;
+    protected static ExtentReports BaseTest;
 
     @BeforeSuite
     public void setupReport() {
-        extent = ExtentReportsManager.getReportInstance();
+    	BaseTest = ExtentReportsManager.getReportInstance();
     }
 
     @AfterSuite
     public void teardownReport() {
-        extent.flush();
+    	BaseTest.flush();
         String reportPath = ExtentReportsManager.reportPath;
         // EmailUtils.sendTestReport(reportPath);
     }
 
     @BeforeMethod
     public void setUp(Method method) {
-    	driver = new ChromeDriver();
+    	
         Log.info("Starting WebDriver execution");
       //  driver = new ChromeDriver();
+       // WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
 
         // Create ExtentTest for current method and assign locally

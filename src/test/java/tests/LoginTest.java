@@ -37,10 +37,11 @@ public class LoginTest extends BaseTest {
 
 	@Test(dataProvider = "LoginTest")
 	public void testValidLogin(String username, String password) {
-	    Log.info("This is a login test");
 
-	    // Create ExtentTest dynamically per username
-	    ExtentTest test = ExtentReportsManager.createTest("LOGIN TEST - " + username);
+	    Log.info("Starting login test for user: " + username);
+
+	    // Use the test instance from BaseTest
+	    test.info("Testing login for: " + username);
 
 	    LoginPage loginPage = new LoginPage(driver);
 	    loginPage.enterUserName(username);
