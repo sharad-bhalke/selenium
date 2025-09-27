@@ -3,7 +3,6 @@ package utils;
 import java.io.File;
 import java.util.Properties;
 
-import base.BaseTest;
 import jakarta.mail.Authenticator;
 import jakarta.mail.Message;
 import jakarta.mail.PasswordAuthentication;
@@ -14,7 +13,7 @@ import jakarta.mail.internet.MimeBodyPart;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.mail.internet.MimeMultipart;
 
-public class EmailUtils extends BaseTest{
+public class EmailUtils{
 	
 
 	 public static void main(String[] args) {
@@ -22,6 +21,7 @@ public class EmailUtils extends BaseTest{
 	        final String senderEmail = "sharad.bhalke7@gmail.com";
 	        final String appPassword = "lrsudwblcfwbhrsm"; // Gmail App Password
 	        final String recipientEmail = "sharad.bhalke7@gmail.com, sharad.bhalke9521@gmail.com";
+	        
 
 	        // SMTP Server Properties
 	        Properties prop = new Properties();

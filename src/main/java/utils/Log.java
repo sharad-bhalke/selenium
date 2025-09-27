@@ -3,9 +3,9 @@ package utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import base.BaseTest;
 
-public class Log  extends BaseTest{
+
+public class Log  {
 
     // Create a logger instance for this class
     private static final Logger logger = LogManager.getLogger(Log.class);

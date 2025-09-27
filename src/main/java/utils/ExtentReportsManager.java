@@ -13,9 +13,8 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
-import base.BaseTest;
 
-public class ExtentReportsManager  extends BaseTest{
+public class ExtentReportsManager{
 
     private static ExtentReports extent;   // single ExtentReports instance
     private static ExtentTest test;        // single ExtentTest instance
