@@ -1,5 +1,5 @@
-package utils;
-
+package utils;                                  //................Emails are not sended.......................
+ 
 import java.io.File;
 import java.util.Properties;
 
