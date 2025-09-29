@@ -72,6 +72,7 @@ public class sendEmail {
             message.setContent(multipart);
 
             
+            
            // AttachementPart.
 
             // Send email
